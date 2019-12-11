@@ -4,8 +4,6 @@ exports[`Display have not changed the UI 1`] = `
 <div
   className="Display"
 >
-  <p
-    className="display-value"
-  />
+  <p />
 </div>
 `;
