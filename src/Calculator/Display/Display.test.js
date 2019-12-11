@@ -1,12 +1,13 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Display from "./Display";
+import PropTypes from "prop-types";
 
 describe("Display", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Display />);
+    wrapper = shallow(<Display displayValue={""} />);
   });
 
   it("should render a main div", () => {
@@ -15,5 +16,15 @@ describe("Display", () => {
 
   it("should have a Display", () => {
     expect(wrapper.find("div").hasClass("Display")).toEqual(true);
+  });
+
+  it("renders the value of displayValue", () => {
+    wrapper.setProps({ displayValue: "test" });
+    expect(wrapper.text()).toEqual("test");
+  });
+
+  it("should check for displayValue prop to be string", () => {
+    const prop_type_is_string = Display.propTypes.displayValue;
+    expect(prop_type_is_string).toBe(PropTypes.string.isRequired);
   });
 });

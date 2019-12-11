@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "./Display.module.css";
+import PropTypes from "prop-types";
 
-const Display = () => <div className={styles.Display}>Display</div>;
+const Display = props => (
+  <div className={styles.Display}>{props.displayValue}</div>
+);
+
+Display.propTypes = { displayValue: PropTypes.string.isRequired };
 
 export default Display;
