@@ -1,6 +1,5 @@
 import React from "react";
 import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
 import App from "./App";
 import Calculator from "./Calculator/Calculator";
 
@@ -12,7 +11,7 @@ describe("App", () => {
   });
 
   it("have not changed the UI", () => {
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("should render a div", () => {
