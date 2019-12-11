@@ -23,7 +23,15 @@ describe("Calculator", () => {
     ).toEqual(true);
   });
 
-  it("should have a <Display />", () => {
-    expect(wrapper.find(Display)).toHaveLength(1);
+  it("should have a state with a string as displayValue", () => {
+    expect(wrapper.instance().state.displayValue).toEqual("");
+  });
+
+  it("should have a <Display /> with displayValue related to the displayValue state", () => {
+    expect(
+      wrapper.containsMatchingElement(
+        <Display displayValue={wrapper.instance().state.displayValue} />
+      )
+    ).toEqual(true);
   });
 });
