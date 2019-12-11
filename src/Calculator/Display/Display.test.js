@@ -10,6 +10,10 @@ describe("Display", () => {
     wrapper = shallow(<Display displayValue={""} />);
   });
 
+  it("have not changed the UI", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it("should render a main div", () => {
     expect(wrapper.find("div").length).toEqual(1);
   });
