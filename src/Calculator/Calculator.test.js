@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import Calculator from "./Calculator";
 import Display from "./Display/Display";
+import KeyPad from "./KeyPad/KeyPad";
 
 describe("Calculator", () => {
   let wrapper;
@@ -33,5 +34,26 @@ describe("Calculator", () => {
         <Display displayValue={wrapper.instance().state.displayValue} />
       )
     ).toEqual(true);
+  });
+
+  it("should have a <KeyPad /> with all key pressed handlers", () => {
+    expect(
+      wrapper.containsMatchingElement(
+        <KeyPad
+          numberPressed={wrapper.instance().numberPressedHandler}
+          dotPressed={wrapper.instance().dotPressedHandler}
+          operatorPressed={wrapper.instance().operatorPressedHandler}
+          resetPressed={wrapper.instance().resetPressedHandler}
+        />
+      )
+    ).toEqual(true);
+  });
+
+  it("should have a lastKeyTypePressed state. First initialized with CE", () => {
+    expect(wrapper.instance().state.lastKeyTypePressed).toEqual("CE");
+  });
+
+  it("should have a currentOperator state. First initialized empty string", () => {
+    expect(wrapper.instance().state.currentOperator).toEqual("");
   });
 });
