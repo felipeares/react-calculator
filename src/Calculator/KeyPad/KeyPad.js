@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./KeyPad.module.css";
+import classes from "./KeyPad.module.css";
 import PropTypes from "prop-types";
 import Key from "../Key/Key";
 
@@ -19,18 +19,37 @@ const KeyPad = props => {
     "CE"
   ].map(number => {
     if (number === "CE")
-      return <Key key={number} value={number} clicked={props.resetPressed} />;
-    return <Key key={number} value={number} clicked={props.numberPressed} />;
+      return (
+        <Key
+          key={number}
+          value={number}
+          clicked={props.resetPressed}
+          keyType={"NumberKey"}
+        />
+      );
+    return (
+      <Key
+        key={number}
+        value={number}
+        clicked={props.numberPressed}
+        keyType={"NumberKey"}
+      />
+    );
   });
 
   const operatorKeys = ["+", "-", "*", "/"].map(operator => (
-    <Key key={operator} value={operator} clicked={props.operatorPressed} />
+    <Key
+      key={operator}
+      value={operator}
+      clicked={props.operatorPressed}
+      keyType={"OperatorKey"}
+    />
   ));
 
   return (
-    <div className={styles.KeyPad}>
-      <div className="NumbersContainer">{numberKeys}</div>
-      <div className="OperatorsContainer">{operatorKeys}</div>
+    <div className={classes.KeyPad}>
+      <div className={classes.NumbersContainer}>{numberKeys}</div>
+      <div className={classes.OperatorsContainer}>{operatorKeys}</div>
     </div>
   );
 };
