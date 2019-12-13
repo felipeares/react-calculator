@@ -11,6 +11,10 @@ describe("Calculator", () => {
     wrapper = shallow(<Calculator />);
   });
 
+  it("have not changed the UI", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it("should have a main div", () => {
     expect(wrapper.find("div").length).toEqual(1);
   });

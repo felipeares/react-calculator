@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calculator have not changed the UI 1`] = `
+<div
+  className="Calculator"
+>
+  <Display
+    displayValue=""
+  />
+  <KeyPad
+    dotPressed={[Function]}
+    numberPressed={[Function]}
+    operatorPressed={[Function]}
+    resetPressed={[Function]}
+  />
+</div>
+`;
