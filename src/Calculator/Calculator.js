@@ -6,13 +6,34 @@ import KeyPad from "./KeyPad/KeyPad";
 class Calculator extends Component {
   state = {
     displayValue: "",
-    lastKeyTypePressed: "CE",
-    currentOperator: ""
+    firstNumber: "",
+    firstOperator: "",
+    secondNumber: ""
   };
 
   /* action handlers */
   numberPressedHandler = numberPressed => {
-    console.log(numberPressed);
+    // check which number to change
+    // case no first operator
+    if (this.state.firstOperator === "") {
+      // change fist number
+      const newFirstNumber = this.state.firstNumber + numberPressed.toString();
+      this.setState({
+        displayValue: newFirstNumber,
+        firstNumber: newFirstNumber
+      });
+    }
+
+    // case with first operaor
+    else {
+      // change second number
+      const newSecondNumber =
+        this.state.secondNumber + numberPressed.toString();
+      this.setState({
+        displayValue: newSecondNumber,
+        secondNumber: newSecondNumber
+      });
+    }
   };
 
   dotPressedHandler = () => {
@@ -20,11 +41,70 @@ class Calculator extends Component {
   };
 
   operatorPressedHandler = operatorPressed => {
-    console.log(operatorPressed);
+    // check state of calculator
+    // case if no first number set yet. then do nothing
+    if (this.state.firstNumber === "") return;
+
+    // case if no second number set
+    if (this.state.secondNumber === "") {
+      // update de inner operator (first operator)
+      this.setState({
+        firstOperator: operatorPressed
+      });
+    }
+
+    // case second number set, then it is time to update all
+    if (this.state.secondNumber !== "") {
+      // get the numbers parsed
+      const firstNumberFloat = parseFloat(this.state.firstNumber);
+      const secondNumberFloat = parseFloat(this.state.secondNumber);
+
+      // build a mapped function
+      const firstOperatorFunction = (a, b, operator) => {
+        switch (operator) {
+          case "+":
+            return a + b;
+          case "-":
+            return a - b;
+          case "*":
+            return a * b;
+          case "/":
+            return a / b;
+          case "=":
+            return b;
+          default:
+            return b;
+        }
+      };
+
+      // calculate new numbers and operators
+      const newFirstNumber = firstOperatorFunction(
+        firstNumberFloat,
+        secondNumberFloat,
+        this.state.firstOperator
+      ).toString();
+
+      const newFirstOperator = this.state.firstOperator;
+      const newSecondNumber = "";
+
+      // set
+      this.setState({
+        displayValue: newFirstNumber,
+        firstNumber: newFirstNumber,
+        firstOperator: newFirstOperator,
+        secondNumber: newSecondNumber
+      });
+    }
   };
 
   resetPressedHandler = () => {
-    console.log("reset pressed");
+    // back to initial state
+    this.setState({
+      displayValue: "",
+      firstNumber: "",
+      firstOperator: "",
+      secondNumber: ""
+    });
   };
 
   render() {

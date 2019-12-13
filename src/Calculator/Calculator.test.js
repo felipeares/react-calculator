@@ -49,11 +49,60 @@ describe("Calculator", () => {
     ).toEqual(true);
   });
 
-  it("should have a lastKeyTypePressed state. First initialized with CE", () => {
-    expect(wrapper.instance().state.lastKeyTypePressed).toEqual("CE");
+  it("should have a firstNumber state", () => {
+    expect(wrapper.instance().state.firstNumber).toEqual("");
   });
 
-  it("should have a currentOperator state. First initialized empty string", () => {
-    expect(wrapper.instance().state.currentOperator).toEqual("");
+  it("should have a firstOperator state", () => {
+    expect(wrapper.instance().state.firstOperator).toEqual("");
+  });
+
+  it("should have a secondNumber state", () => {
+    expect(wrapper.instance().state.secondNumber).toEqual("");
+  });
+});
+
+describe("Calculator Operations", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<Calculator />);
+  });
+
+  it("should calculate basic operations", () => {
+    const operations = [
+      {
+        keys: ["3", "4", "+", "1", "2", "4", "6", "="],
+        res: "1280"
+      },
+      {
+        keys: ["1", "2", "-", "6", "="],
+        res: "6"
+      },
+      {
+        keys: ["1", "2", "-", "16", "="],
+        res: "-4"
+      },
+      {
+        keys: ["1", "2", "*", "12", "="],
+        res: "144"
+      },
+      {
+        keys: ["2", "8", "/", "7", "="],
+        res: "4"
+      }
+    ];
+
+    operations.forEach(op => {
+      op.keys.forEach(key => {
+        if (isNaN(key) && key !== ".") {
+          wrapper.instance().operatorPressedHandler(key);
+        } else {
+          wrapper.instance().numberPressedHandler(key);
+        }
+      });
+      expect(wrapper.instance().state.displayValue).toEqual(op.res);
+      wrapper.instance().resetPressedHandler();
+    });
   });
 });
