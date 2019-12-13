@@ -37,7 +37,6 @@ describe("KeyPad", () => {
 
   it("should check for all prop types correctly setup", () => {
     expect(KeyPad.propTypes.numberPressed).toBe(PropTypes.func.isRequired);
-    expect(KeyPad.propTypes.dotPressed).toBe(PropTypes.func.isRequired);
     expect(KeyPad.propTypes.operatorPressed).toBe(PropTypes.func.isRequired);
     expect(KeyPad.propTypes.resetPressed).toBe(PropTypes.func.isRequired);
   });

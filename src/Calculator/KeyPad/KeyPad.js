@@ -63,7 +63,6 @@ const KeyPad = props => {
 
 KeyPad.propTypes = {
   numberPressed: PropTypes.func.isRequired,
-  dotPressed: PropTypes.func.isRequired,
   operatorPressed: PropTypes.func.isRequired,
   resetPressed: PropTypes.func.isRequired
 };
