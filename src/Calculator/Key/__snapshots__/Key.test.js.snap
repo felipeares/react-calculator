@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Key have not changed the UI 1`] = `
+<div
+  className="Key "
+  onClick={[Function]}
+>
+  <p
+    className="KeyValue"
+  />
+</div>
+`;

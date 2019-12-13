@@ -10,6 +10,10 @@ describe("Key", () => {
     wrapper = shallow(<Key value={""} clicked={jest.fn()} keyType={""} />);
   });
 
+  it("have not changed the UI", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it("should render main div", () => {
     expect(wrapper.find("div").length).toEqual(1);
   });

@@ -18,6 +18,10 @@ describe("KeyPad", () => {
     );
   });
 
+  it("have not changed the UI", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it("should render 4 <div />'s", () => {
     expect(wrapper.find("div").length).toEqual(4);
   });
