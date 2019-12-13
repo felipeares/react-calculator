@@ -3,7 +3,30 @@ import styles from "./KeyPad.module.css";
 import PropTypes from "prop-types";
 
 const KeyPad = () => {
-  return <div className={styles.KeyPad}></div>;
+  const numberKeys = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    ".",
+    "0",
+    "CE"
+  ].map(number => <p key={number}>{number}</p>);
+  const operatorKeys = ["+", "-", "*", "/"].map(operator => (
+    <p key={operator}>{operator}</p>
+  ));
+
+  return (
+    <div className={styles.KeyPad}>
+      <div className="NumbersContainer">{numberKeys}</div>
+      <div className="OperatorsContainer">{operatorKeys}</div>
+    </div>
+  );
 };
 
 KeyPad.propTypes = {

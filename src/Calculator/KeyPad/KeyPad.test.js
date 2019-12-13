@@ -17,11 +17,11 @@ describe("KeyPad", () => {
     );
   });
 
-  it("should render a main div", () => {
-    expect(wrapper.find("div").length).toEqual(1);
+  it("should render 3 <div />'s", () => {
+    expect(wrapper.find("div").length).toEqual(3);
   });
 
-  it("should have a KeyPad named class", () => {
+  it("should have a KeyPad named class on the first div", () => {
     expect(
       wrapper
         .find("div")
@@ -35,5 +35,13 @@ describe("KeyPad", () => {
     expect(KeyPad.propTypes.dotPressed).toBe(PropTypes.func.isRequired);
     expect(KeyPad.propTypes.operatorPressed).toBe(PropTypes.func.isRequired);
     expect(KeyPad.propTypes.resetPressed).toBe(PropTypes.func.isRequired);
+  });
+
+  it("renders the values of operators", () => {
+    expect(wrapper.find(".OperatorsContainer").text()).toEqual("+-*/");
+  });
+
+  it("renders the values of numbers", () => {
+    expect(wrapper.find(".NumbersContainer").text()).toEqual("123456789.0CE");
   });
 });
