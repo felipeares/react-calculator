@@ -1,3 +1,46 @@
 .Key {
-  font: inherit;
+  align-items: center;
+  display: flex;
+  height: 25%;
+  justify-content: center;
+  transition: background-color 0.3s linear;
+}
+
+.Key:hover {
+  cursor: pointer;
+}
+
+.OperatorKey {
+  background-color: var(--action-key-color);
+  width: 100%;
+}
+
+.OperatorKey:hover {
+  background-color: var(--action-key-color-hover);
+}
+
+.NumberKey {
+  background-color: var(--number-key-color);
+  width: calc(100% / 3);
+}
+
+.NumberKey:hover {
+  background-color: var(--number-key-color-hover);
+}
+
+.SubmitKey {
+  background-color: var(--submit-key-color);
+  height: 100%;
+  width: 100%;
+}
+
+.SubmitKey:hover {
+  background-color: var(--submit-key-color-hover);
+}
+
+.KeyValue {
+  color: var(--key-text-color);
+  font-family: var(--main-font);
+  font-size: var(--key-text-size);
+  font-weight: var(--key-text-weight);
 }
