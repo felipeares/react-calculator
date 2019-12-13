@@ -80,7 +80,7 @@ class Calculator extends Component {
         this.state.firstOperator
       ).toString();
 
-      const newFirstOperator = this.state.firstOperator;
+      const newFirstOperator = operatorPressed;
       const newSecondNumber = "";
 
       // set
