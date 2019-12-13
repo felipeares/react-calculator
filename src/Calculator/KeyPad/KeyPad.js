@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./KeyPad.module.css";
 import PropTypes from "prop-types";
+import Key from "../Key/Key";
 
-const KeyPad = () => {
+const KeyPad = props => {
   const numberKeys = [
     "1",
     "2",
@@ -16,9 +17,14 @@ const KeyPad = () => {
     ".",
     "0",
     "CE"
-  ].map(number => <p key={number}>{number}</p>);
+  ].map(number => {
+    if (number === "CE")
+      return <Key key={number} value={number} clicked={props.resetPressed} />;
+    return <Key key={number} value={number} clicked={props.numberPressed} />;
+  });
+
   const operatorKeys = ["+", "-", "*", "/"].map(operator => (
-    <p key={operator}>{operator}</p>
+    <Key key={operator} value={operator} clicked={props.operatorPressed} />
   ));
 
   return (

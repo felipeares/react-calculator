@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import PropTypes from "prop-types";
 import KeyPad from "./KeyPad";
+import Key from "../Key/Key";
 
 describe("KeyPad", () => {
   let wrapper;
@@ -37,11 +38,11 @@ describe("KeyPad", () => {
     expect(KeyPad.propTypes.resetPressed).toBe(PropTypes.func.isRequired);
   });
 
-  it("renders the values of operators", () => {
-    expect(wrapper.find(".OperatorsContainer").text()).toEqual("+-*/");
+  it("should render 12 <Key /> in the numbers container", () => {
+    expect(wrapper.find(".NumbersContainer").find(Key).length).toEqual(12);
   });
 
-  it("renders the values of numbers", () => {
-    expect(wrapper.find(".NumbersContainer").text()).toEqual("123456789.0CE");
+  it("should render 4 <Key /> in the operators container", () => {
+    expect(wrapper.find(".OperatorsContainer").find(Key).length).toEqual(4);
   });
 });
