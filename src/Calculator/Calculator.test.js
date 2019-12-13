@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import Calculator from "./Calculator";
 import Display from "./Display/Display";
 import KeyPad from "./KeyPad/KeyPad";
@@ -108,5 +108,33 @@ describe("Calculator Operations", () => {
       expect(wrapper.instance().state.displayValue).toEqual(op.res);
       wrapper.instance().resetPressedHandler();
     });
+  });
+});
+
+describe("mounted Calculator", () => {
+  let wrapper;
+
+  beforeEach(() => (wrapper = mount(<Calculator />)));
+
+  it("calls numberPressedHandler when a number key is clicked", () => {
+    const spy = jest.spyOn(wrapper.instance(), "numberPressedHandler");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper
+      .find(".NumberKey")
+      .first()
+      .simulate("click");
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls operatorPressedHandler when a operator key is clicked", () => {
+    const spy = jest.spyOn(wrapper.instance(), "operatorPressedHandler");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper
+      .find(".OperatorKey")
+      .first()
+      .simulate("click");
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

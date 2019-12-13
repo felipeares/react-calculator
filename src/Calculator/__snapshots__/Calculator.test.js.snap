@@ -8,7 +8,6 @@ exports[`Calculator have not changed the UI 1`] = `
     displayValue=""
   />
   <KeyPad
-    dotPressed={[Function]}
     numberPressed={[Function]}
     operatorPressed={[Function]}
     resetPressed={[Function]}

@@ -36,10 +36,6 @@ class Calculator extends Component {
     }
   };
 
-  dotPressedHandler = () => {
-    console.log("dot pressed");
-  };
-
   operatorPressedHandler = operatorPressed => {
     // check state of calculator
     // case if no first number set yet. then do nothing
@@ -113,7 +109,6 @@ class Calculator extends Component {
         <Display displayValue={this.state.displayValue} />
         <KeyPad
           numberPressed={this.numberPressedHandler}
-          dotPressed={this.dotPressedHandler}
           operatorPressed={this.operatorPressedHandler}
           resetPressed={this.resetPressedHandler}
         />
