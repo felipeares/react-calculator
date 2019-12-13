@@ -7,17 +7,17 @@ describe("Key", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Key value={""} clicked={jest.fn()} />);
+    wrapper = shallow(<Key value={""} clicked={jest.fn()} keyType={""} />);
   });
 
-  it("should render a main button", () => {
-    expect(wrapper.find("button").length).toEqual(1);
+  it("should render main div", () => {
+    expect(wrapper.find("div").length).toEqual(1);
   });
 
   it("should have a class of Key", () => {
     expect(
       wrapper
-        .find("button")
+        .find("div")
         .first()
         .hasClass("Key")
     ).toEqual(true);
@@ -26,5 +26,11 @@ describe("Key", () => {
   it("should check for all prop types correctly setup", () => {
     expect(Key.propTypes.value).toBe(PropTypes.string.isRequired);
     expect(Key.propTypes.clicked).toBe(PropTypes.func.isRequired);
+    expect(Key.propTypes.keyType).toBe(PropTypes.string.isRequired);
+  });
+
+  it("should render as text the value props", () => {
+    wrapper.setProps({ value: "test" });
+    expect(wrapper.text()).toEqual("test");
   });
 });
