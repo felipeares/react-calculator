@@ -1,3 +1,28 @@
 .KeyPad {
-  font: inherit;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: var(--keypad-height);
+  padding: 2%;
+  width: var(--keypad-width);
+}
+
+.NumbersContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 80%;
+  width: 75%;
+}
+
+.OperatorsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 25%;
+}
+
+.submit-container {
+  height: 20%;
+  width: 100%;
 }
