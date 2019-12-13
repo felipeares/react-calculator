@@ -18,8 +18,8 @@ describe("KeyPad", () => {
     );
   });
 
-  it("should render 3 <div />'s", () => {
-    expect(wrapper.find("div").length).toEqual(3);
+  it("should render 4 <div />'s", () => {
+    expect(wrapper.find("div").length).toEqual(4);
   });
 
   it("should have a KeyPad named class on the first div", () => {
@@ -44,5 +44,9 @@ describe("KeyPad", () => {
 
   it("should render 4 <Key /> in the operators container", () => {
     expect(wrapper.find(".OperatorsContainer").find(Key).length).toEqual(4);
+  });
+
+  it("should render a Key within a SubmitContainer", () => {
+    expect(wrapper.find(".SubmitContainer").find(Key).length).toEqual(1);
   });
 });

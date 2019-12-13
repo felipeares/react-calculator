@@ -50,6 +50,13 @@ const KeyPad = props => {
     <div className={classes.KeyPad}>
       <div className={classes.NumbersContainer}>{numberKeys}</div>
       <div className={classes.OperatorsContainer}>{operatorKeys}</div>
+      <div className={classes.SubmitContainer}>
+        <Key
+          value={"="}
+          clicked={props.operatorPressed}
+          keyType={"SubmitKey"}
+        />
+      </div>
     </div>
   );
 };
